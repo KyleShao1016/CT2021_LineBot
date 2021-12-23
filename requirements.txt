@@ -5,7 +5,7 @@ click==8.0.3
 flask==2.0.2
 future==0.18.2
 idna==3.3
-itsdangerous==2.1.0
+itsdangerous==2.0.1
 jinja2==2.10.3
 line-bot-sdk==2.0.1
 markupsafe==1.1.1
