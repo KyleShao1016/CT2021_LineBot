@@ -42,7 +42,7 @@ def scrape_preseason_schedule():
     day_of_weak = root.find_all("h5", class_= "fs12 mb-2")
     time = root.find_all("h6", class_= "fs12")
     teams = root.find_all("h6", class_= "fs12 mb-2 PC_only") 
-    scores = root.find_all("h6", class_ = "PC_only fs22")
+    scores = root.find_all("h6", class_ = "PC_only ff8bit fs20")
 
     stadiums_arr = []
     game_num_arr = []
@@ -104,7 +104,7 @@ def scrape_regular_season_schedule():
     })
     with req.urlopen(request) as response:
         data = response.read().decode("utf-8")
-        
+            
 
     root = bs4.BeautifulSoup(data, "html.parser")
     # print(root)
@@ -116,7 +116,9 @@ def scrape_regular_season_schedule():
     day_of_weak = root.find_all("h5", class_= "fs12 mb-2")
     time = root.find_all("h6", class_= "fs12")
     teams = root.find_all("h6", class_= "fs12 mb-2 PC_only") 
-    scores = root.find_all("h6", class_ = "PC_only fs22")
+    scores_right = root.find_all("h6", class_ = "MOBILE_only fs12 ff8bit")
+    scores_left = root.find_all("h6", class_ = "MOBILE_only ff8bit fs12 text-left")
+
 
     stadiums_arr = []
     game_num_arr = []
@@ -124,24 +126,23 @@ def scrape_regular_season_schedule():
     day_of_weak_arr = []
     time_arr = []
     team_arr = []
-    score_arr = []
 
     for stadium in stadiums:
         stadiums_arr.append(stadium.string)
-        
+            
     for num in game_num:
         game_num_arr.append(num.string)
         
     for d in date:
         date_arr.append(d.string)
-        
+            
     for day in day_of_weak:
         day_of_weak_arr.append(day.string)
-        
+            
     for t in time:
         if t.string:
             time_arr.append(t.string)
-        
+            
     for team in teams:
         text = str(team.text)
         n = 0
@@ -156,11 +157,20 @@ def scrape_regular_season_schedule():
         text = text[:mid + 1] + text[end + 1:]
         team_arr.append(text)
 
-    for score in scores:
-        score_arr.append(score.string)
-            
-        
-    j = 0
+    score_arr = [''] * (len(stadiums_arr) * 2)
+    i = 0
+    for score in scores_right:
+        score_arr[i] = score.string
+        i += 2
+
+    i = 1
+    for score in scores_left:
+        score_arr[i] = score.string
+        i += 2
+    print(score_arr)
+                
+                
+    j = 0 
     data = str()
     for i in range(len(stadiums_arr)):
         data += stadiums_arr[i] + ' ' + game_num_arr[i] + ' ' + date_arr[i] + ' ' + day_of_weak_arr[i] + ' ' + time_arr[i] + '\n'
@@ -168,9 +178,8 @@ def scrape_regular_season_schedule():
         data += team_arr[j + 1] + score_arr[j + 1] + '\n'
         data += '----------------------------------\n'
         j += 2
-        
+            
     return data
-        
         
 def scrape_team_ranking():
     url = "https://pleagueofficial.com/stat-ranking/2021-22"
