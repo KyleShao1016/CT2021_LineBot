@@ -15,4 +15,4 @@ bs4 = "==0.0.1"
 
 
 [requires]
-python_version = "3.6"
+python_version = "3.9.9"
