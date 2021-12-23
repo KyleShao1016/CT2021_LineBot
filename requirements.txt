@@ -15,5 +15,5 @@ requests==2.26.0
 six==1.16.0
 transitions==0.8.10
 urllib3==1.26.7
-werkzeug==0.16.0
+werkzeug==2.0.0
 beautifulsoup4==4.10.0
