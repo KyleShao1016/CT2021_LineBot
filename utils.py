@@ -5,7 +5,6 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 import urllib.request as req
 from bs4 import BeautifulSoup
-from tabulate import tabulate
 
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
 
