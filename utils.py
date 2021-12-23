@@ -4,7 +4,7 @@ from linebot import LineBotApi, WebhookParser
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 import urllib.request as req
-import bs4
+from bs4 import BeautifulSoup
 from tabulate import tabulate
 
 channel_access_token = os.getenv("LINE_CHANNEL_ACCESS_TOKEN", None)
@@ -33,7 +33,7 @@ def scrape_preseason_schedule():
     })
     with req.urlopen(request) as response:
         data = response.read().decode("utf-8")
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
 
     # stadium / game number / date / day_of_weak / time 
     stadiums = root.find_all("h5", class_= "fs12 mb-0")
@@ -106,7 +106,7 @@ def scrape_regular_season_schedule():
         data = response.read().decode("utf-8")
             
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     # stadium / game number / date / day_of_weak / time 
@@ -190,7 +190,7 @@ def scrape_team_ranking():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     infos = root.find_all("tr", class_= "bg-deepgray text-light")
@@ -234,7 +234,7 @@ def scrape_player_ranking():
     with req.urlopen(request) as response:
         data = response.read().decode("utf-8")
         
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     labels = []
@@ -291,7 +291,7 @@ def scrape_fubon_team_intro():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     team_intro = str()
@@ -315,7 +315,7 @@ def scrape_fubon_member_list():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     # fubon crew member
@@ -360,7 +360,7 @@ def scrape_kings_team_intro():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     team_intro = str()
@@ -384,7 +384,7 @@ def scrape_kings_member_list():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     # kings crew member
@@ -429,7 +429,7 @@ def scrape_pilots_team_intro():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     team_intro = str()
@@ -453,7 +453,7 @@ def scrape_pilots_member_list():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     # pilots crew member
@@ -498,7 +498,7 @@ def scrape_lioneers_team_intro():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     team_intro = str()
@@ -522,7 +522,7 @@ def scrape_lioneers_member_list():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     # lioneers crew member
@@ -567,7 +567,7 @@ def scrape_dreamers_team_intro():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     team_intro = str()
@@ -591,7 +591,7 @@ def scrape_dreamers_member_list():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     # formosa taishin dreamers crew member
@@ -636,7 +636,7 @@ def scrape_steelers_team_intro():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     team_intro = str()
@@ -660,7 +660,7 @@ def scrape_steelers_member_list():
         data = response.read().decode("utf-8")
         
 
-    root = bs4.BeautifulSoup(data, "html.parser")
+    root = BeautifulSoup(data, "html.parser")
     # print(root)
 
     # kaohsiung steelers crew member
