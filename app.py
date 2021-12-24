@@ -14,7 +14,6 @@ from machine import create_machine
 load_dotenv()
 
 machines = {}
-
 app = Flask(__name__, static_url_path="")
 
 
@@ -83,7 +82,6 @@ def webhook_handler():
             continue
         # print(f"\nFSM STATE: {machine.state}")
         # print(f"REQUEST BODY: \n{body}")
-        # Create a machine for new user
         if event.source.user_id not in machines:
             machines[event.source.user_id] = create_machine()
 
