@@ -181,7 +181,7 @@ def scrape_regular_season_schedule():
     return data
         
 def scrape_team_ranking():
-    url = "https://pleagueofficial.com/stat-ranking/2021-22"
+    url = "https://pleagueofficial.com/standings"
     request = req.Request(url, headers = {
         "User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.93 Safari/537.36"
     })
